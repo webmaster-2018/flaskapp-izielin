@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{% block tytul %}{% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/scrolling-nav.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+
+    <div class="container">
+      <nav class="fixed-top">
+        <input type="checkbox" id="nav" class="hidden">
+        <label for="nav" class="nav-btn">
+          <i></i>
+          <i></i>
+          <i></i>
+        </label>
+        <div class="logo">
+          <a href="{{ url_for('index') }}">Uczniowie</a>
+        </div>
+        <div class="nav-wrapper">
+
+        
+        <ul>
+          <li class="nav-item active">
+            <a class="nav-link" href="{{ url_for('index') }}">Strona główna <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Listy
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{ url_for('lista') }}">Lista uczniów</a>
+              <a class="dropdown-item" href="{{ url_for('lista_klas') }}">Lista klas</a>
+              <a class="dropdown-item" href="{{ url_for('lista_przedmiotow') }}">Lista przedmiotów</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Dodaj
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{ url_for('dodaj') }}">Dodaj ucznia</a>
+              <a class="dropdown-item" href="{{ url_for('dodaj_klasy') }}">Dodaj klasę</a> 
+              <a class="dropdown-item" href="{{ url_for('dodaj_przedmiot') }}">Dodaj przedmiot</a> 
+            </div>
+          </li>
+        </ul>
+
+        </div>
+      </nav>
+    </div>
+
+    <section id="about">
+        <div class="row">
+          <div class="col-lg-12 mx-auto">
+            {% with komunikaty  = get_flashed_messages(with_categories=true) %}
+                {% if komunikaty %}
+                    {% for kat, kom in komunikaty%}
+                        <p class ="{{ kat }}"> {{ kom }}</p>
+                    {% endfor%}
+                {% endif%}
+                {% endwith%}
+
+            {% block tresc %}{% endblock %}
+          </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-template">
+      <div class="container px-md-5">
+        <div class="row mb-5">
+          <div class="col-md">
+            <div class="footer-template-widget mb-4 ml-md-4">
+              <ul>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius</p>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+          </div>
+          <div class="col-md">
+            <div class="footer-template-widget mb-4">
+              <h2>Lorem ipsum et dolor</h2>
+              <ul>
+                <a href="#">
+                  <p>Lorem ipsum et dolor<i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i></p>
+                </a>
+                <hr>
+                <a href="#">
+                  <p>Lorem ipsum et dolor<i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i></p>
+                </a>
+                <hr>
+                <a href="#">
+                  <p>Lorem ipsum et dolor<i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i></p>
+                </a>
+                <hr>
+                <a href="#">
+                  <p>Lorem ipsum et dolor <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i></p>
+                </a>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="footer-template-widget mb-4">
+              <h2>Kontakt</h2>
+              <div class=" mb-3">
+                <ul>
+                  <li>
+                    <p>Lorem ipsum et dolor</p>
+                  </li>
+                  <li>
+                    <p>Lorem ipsum et dolor</p>
+                  </li>
+                  <p>Lorem ipsum et dolor<span class="email"><b>Lorem ipsum et dolor</b></span></p>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+          </div>
+          <div class="col-md-6">
+            <p>Theme © Coding by </p>
+          </div>
+          <div class="col-md-3">
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="{{ url_for('static', filename='vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+
+    <!-- Custom JavaScript for this theme -->
+    <script src="{{ url_for('static', filename='js/scrolling-nav.js') }}"></script>
+
+  </body>
+
+</html>

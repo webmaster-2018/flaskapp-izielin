@@ -1,0 +1,33 @@
+{% extends "szablon.html"%}
+{% block tytul%}Uczniowie – Lista{% endblock%}
+{% block h1%} Klasy {% endblock%}
+{% block tresc%}
+
+
+<div class="row">
+    <div class="col-lg-6 mx-auto">
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <th scope="col">id</th>
+                <th style="width:25%;" scope="col">Klasa</th>
+                <th style="width:45%;" scope="col">Listy uczniów</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for c in classes %}
+                <tr>
+                    <th scope="row">{{c}}</th>
+                    <td style="width:25%;">{{c.class_name}}</td>
+                    <td style="width:45%;"><a href='lista_klas/{{c}}'>Lista uczniów klasy {{c.class_name}} &rarr;</a></td>
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+        
+
+
+{% endblock%}

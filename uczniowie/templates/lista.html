@@ -1,0 +1,36 @@
+{% extends "szablon.html"%}
+{% block tytul%}Uczniowie – Lista{% endblock%}
+{% block h1%} Klasy {% endblock%}
+{% block tresc%}
+
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Imie</th>
+                    <th scope="col">Nazwisko</th>
+                    <th scope="col">Płeć(id)</th>
+                    <th scope="col">Oceny</th>
+                    <th scope="col">Dodaj Ocenę</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for s in students %}
+                <tr>
+                    <th scope="row">{{s}}</a></th>
+                    <td>{{s.student_name}}</td>
+                    <td>{{s.surname}}</td>
+                    <td>{{s.gender_key}}</td>
+                    <td style="width:35%;"><a href='lista_ocen/{{s}}'>Zobacz oceny &rarr;</a></td>
+                    <td style="width:35%;"><a href='/lista_klas/lista_ocen/dodaj_ocene/{{s}}'>Dodaj ocenę &rarr;</a></td>
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+{% endblock%}

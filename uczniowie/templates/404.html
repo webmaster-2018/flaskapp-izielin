@@ -1,0 +1,20 @@
+{% extends "szablon.html"%}
+{% block tytul%}Uczniowie – Błąd{% endblock%}
+{% block tresc%}
+
+
+    <div class="box col-lg-5 mx-auto">
+        <h1>404</h1>
+        <h2>Nie można znaleźć strony</h2>
+        <hr/>
+        <p>Strona, której szukasz, mogła zostać usunięta lub jest chwilowo niedostępna</p>
+        <p>Please try the following:</p>
+            <ul>
+                <li> Jeśli wpiszesz adres strony na <strong> pasku adresu </ strong>, upewnij się, że jest on wpisany poprawnie. </li>
+                <li> Kliknij przycisk <a href="{{ url_for('index') }}"><strong> Wstecz </strong></a>, aby powrócić do strony głównej </li>
+                <li> Jeśli byłeś powiązany z tą stroną, skontaktuj się z administratorem i poinformuj o tym problemie. </li>
+            </ul>
+    </div>
+
+
+{% endblock%}

@@ -1,0 +1,26 @@
+{% extends "szablon.html"%}
+{% block h1%}Aplikacja QUIZ - dodaj pytania{% endblock%}
+{% block tresc%}
+
+    
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <form method="POST" >
+            
+                {{ form.value.label }} <br>
+                {{ form.value(class="form-control") }} <br>
+                {{ form.student_key.label }} <br>
+                {{ form.student_key(class="form-control") }} <br>
+                {{ form.subject_key.label }} <br>
+                {{ form.subject_key(class="form-control") }} <br>
+
+            
+                <input type="submit" class="btn btn-default" value="Prześlij">
+            </form>
+    
+        </div>
+    </div>
+    
+    
+    
+{% endblock%}
