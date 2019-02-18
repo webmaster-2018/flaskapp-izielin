@@ -9,15 +9,17 @@
         <table class="table table-bordered">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">id przedmiotu</th>
-                    <th>Oceny</th>
+                    <th scope="col">Przedmiot</th>
+                    <th>Ocena</th>
                 </tr>
             </thead>
             <tbody>
 
                 {% for m in marks %}
+                <!-- marks = (Mark.select(Mark.value, Student.id, Student.student_name, Student.surname, Subject.subject_name, Class.class_name) -->
+
                 <tr>
-                    <td>{{m.subject_key}}</td>
+                    <td>{{m.subject_key.subject_name}}</td>
                     <td>{{m.value}}</td>
                     {% endfor %}
                 </tr>

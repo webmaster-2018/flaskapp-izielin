@@ -11,7 +11,8 @@
                     <th scope="col">id</th>
                     <th scope="col">Imie</th>
                     <th scope="col">Nazwisko</th>
-                    <th scope="col">Płeć(id)</th>
+                    <th scope="col">Płeć</th>
+                    <th scope="col">Klasa</th>
                     <th scope="col">Oceny</th>
                     <th scope="col">Dodaj Ocenę</th>
                 </tr>
@@ -19,14 +20,15 @@
             <tbody>
                 {% for s in students %}
                 <tr>
-                    <th scope="row">{{s}}</a></th>
+                    <th scope="row">{{s.id}}</a></th>
                     <td>{{s.student_name}}</td>
                     <td>{{s.surname}}</td>
-                    <td>{{s.gender_key}}</td>
-                    <td style="width:35%;"><a href='lista_ocen/{{s}}'>Zobacz oceny &rarr;</a></td>
-                    <td style="width:35%;"><a href='/lista_klas/lista_ocen/dodaj_ocene/{{s}}'>Dodaj ocenę &rarr;</a></td>
-                    {% endfor %}
+                    <td>{{s.gender_key.gender_name}}</td>
+                    <td>{{s.class_key.class_name}}</td>
+                    <td><a href='/lista_ocen/{{s.id}}'>Zobacz oceny</a></td>
+                    <td><a href='/dodaj_ocene/{{s.id}}'>Dodaj ocenę &rarr;</a></td>
                 </tr>
+                {% endfor %}
             </tbody>
         </table>
 

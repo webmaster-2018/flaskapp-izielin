@@ -29,7 +29,14 @@ def flash_errors(form):
 
 @app.route("/lista")
 def lista():
-    students = Student.select()
+    # students = Student.select()
+    students = (Student
+         .select(Student.id, Student.student_name, Student.surname, Gender.gender_name, Class.class_name)
+         .join_from(Student, Gender)  # Join Student -> Gender.
+         .join_from(Student, Class, JOIN.LEFT_OUTER))  # Join Student -> Class.
+    # debug print
+    for row in students:
+        print(row.id, row.student_name, row.surname, row.gender_key.gender_name, row.class_key.class_name)
     return render_template('lista_wszystkich.html', students=students)
 
 
@@ -51,13 +58,20 @@ def lista_przedmiotow():
     return render_template('lista_przedmiotow.html', subjects=subjects)
 
 
-@app.route("/lista_klas/lista_ocen/<id>")
-def oceny(id):
-    marks = Mark.select().where(Mark.student_key == id)
+@app.route("/lista_ocen/<id>")
+# @app.route("/lista_klas/lista_ocen/<id>")
+def lista_ocen(id):
+    # marks = Mark.select().where(Mark.student_key == id)
+    marks = (Mark.select(Mark.value, Student.id, Student.student_name, Student.surname, Subject.subject_name)
+        .join_from(Mark, Student)
+        .join_from(Mark, Subject, JOIN.LEFT_OUTER)
+        .where(Student.id == id))
+
     return render_template('lista_ocen.html', marks=marks)
 
 
-@app.route("/lista_klas/lista_ocen/dodaj_ocene/<id>", methods=['GET', 'POST'])
+@app.route("/dodaj_ocene/<id>", methods=['GET', 'POST'])
+# @app.route("/lista_klas/lista_ocen/dodaj_ocene/<id>", methods=['GET', 'POST'])
 def dodaj_ocene(id):
     
     form = DodajOceneForm()
@@ -76,7 +90,7 @@ def dodaj_ocene(id):
 
         flash("Dodano ocene: {} ".format(
             form.value.data))
-        return redirect(url_for('lista_ocen'))
+        return redirect(url_for('lista')) # FIXME lista_ocen(id)
 
     return render_template('dodaj_ocene.html', form=form)
 
