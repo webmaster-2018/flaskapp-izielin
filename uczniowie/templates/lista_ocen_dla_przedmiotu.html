@@ -8,9 +8,10 @@
     <div class="col-lg-6 mx-auto">
         <table class="table table-bordered">
             <thead class="thead-dark">
-                <tr><th colspan=2 ><center>{{marks[0].student_key.student_name}} {{marks[0].student_key.surname}}</center></th></tr>
+                <tr><th colspan=3 ><center>{{marks[0].subject_key.subject_name}}</center></th></tr>
                 <tr>
-                    <th scope="col">Przedmiot</th>
+                    <th scope="col">Uczeń</th>
+                    <!-- <th>Przedmiot</th> -->
                     <th>Ocena</th>
                 </tr>
             </thead>
@@ -20,7 +21,8 @@
                 <!-- marks = (Mark.select(Mark.value, Student.id, Student.student_name, Student.surname, Subject.subject_name, Class.class_name) -->
 
                 <tr>
-                    <td>{{m.subject_key.subject_name}}</td>
+                    <td>{{m.student_key.student_name}} {{m.student_key.surname}}</td>
+                    <!-- <td>{{m.subject_key.subject_name}}</td> -->
                     <td>{{m.value}}</td>
                     {% endfor %}
                 </tr>
